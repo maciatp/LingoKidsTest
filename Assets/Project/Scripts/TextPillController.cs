@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 
 public class TextPillController : MonoBehaviour
 {
@@ -33,12 +34,15 @@ public class TextPillController : MonoBehaviour
         SetHiddenImmediate();
     }
 
-    public void Show() //Calling from external button
+    public void Show(string localizationKey) //Called from debug button. Lets change localizationKey during Runtime
     {
+        GetComponentInChildren<LocalizeStringEvent>().SetEntry(localizationKey);
+        
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
 
         currentRoutine = StartCoroutine(ShowSequence());
+
     }
 
     private IEnumerator ShowSequence()
