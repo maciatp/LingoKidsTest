@@ -15,6 +15,9 @@ public class TextPillController : MonoBehaviour
     [Header("Timing")]
     [SerializeField] private float secondsShowing = 5f;
 
+    [Header("Parameters")]
+    [SerializeField] private bool activateOnStart = false;
+
     private Vector2 shownPosition;
     private Vector2 hiddenPosition;
 
@@ -33,8 +36,15 @@ public class TextPillController : MonoBehaviour
 
         SetHiddenImmediate();
     }
+    private void Start()
+    {
+        if(activateOnStart)
+        {
+            StartCoroutine(ShowSequence());
+        }
+    }
 
-    public void Show(string localizationKey) //Called from debug button. Lets change localizationKey during Runtime
+    public void Show(string localizationKey) //Demo Function. Multiple buttons are used to simulate runtime content selection, allowing different localization keys to be tested dynamically.
     {
         GetComponentInChildren<LocalizeStringEvent>().SetEntry(localizationKey);
         
