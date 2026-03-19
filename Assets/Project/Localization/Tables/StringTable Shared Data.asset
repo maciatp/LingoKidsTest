@@ -16,7 +16,19 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: a7300280b0bc6024c82910c594279229
   m_Entries:
   - m_Id: 65892339712
-    m_Key: text_canoe
+    m_Key: key_canoe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28455152209920
+    m_Key: key_island
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31774536978432
+    m_Key: key_wave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31878731878400
+    m_Key: key_sun
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -22,6 +22,18 @@ MonoBehaviour:
     m_Localized: canoa
     m_Metadata:
       m_Items: []
+  - m_Id: 28455152209920
+    m_Localized: isla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31774536978432
+    m_Localized: ola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31878731878400
+    m_Localized: Sol
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
