@@ -8,11 +8,11 @@ public class TextPillController : MonoBehaviour
     [SerializeField] private RectTransform rectTransform;
 
     [Header("Animation")]
-    [SerializeField] private float animationDuration = 0.35f;
-    [SerializeField] private float hiddenYOffset = 200f;
+    [SerializeField] private float animationDuration = 0.45f;
+    [SerializeField] private float hiddenYOffset = 350f;
 
     [Header("Timing")]
-    [SerializeField] private float secondsShowing = 2f;
+    [SerializeField] private float secondsShowing = 5f;
 
     private Vector2 shownPosition;
     private Vector2 hiddenPosition;
@@ -33,7 +33,7 @@ public class TextPillController : MonoBehaviour
         SetHiddenImmediate();
     }
 
-    public void Show()
+    public void Show() //Calling from external button
     {
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
@@ -63,7 +63,10 @@ public class TextPillController : MonoBehaviour
 
         currentRoutine = null;
     }
-
+    private float EaseOutCubic(float t)
+    {
+        return 1f - Mathf.Pow(1f - t, 3f);
+    }
     private IEnumerator Animate(
     Vector2 fromPosition,
     Vector2 toPosition,
@@ -80,7 +83,7 @@ public class TextPillController : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            float easedT = Mathf.SmoothStep(0f, 1f, t);
+            float easedT = EaseOutCubic(t);
 
             rectTransform.anchoredPosition = Vector2.Lerp(fromPosition, toPosition, easedT);
             canvasGroup.alpha = Mathf.Lerp(fromAlpha, toAlpha, easedT);
