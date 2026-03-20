@@ -40,7 +40,7 @@ public class TextPillController : MonoBehaviour
     {
         if(activateOnStart)
         {
-            StartCoroutine(ShowSequence());
+            StartCoroutine(StartOnPlay());
         }
     }
 
@@ -54,7 +54,11 @@ public class TextPillController : MonoBehaviour
         currentRoutine = StartCoroutine(ShowSequence());
 
     }
-
+    private IEnumerator StartOnPlay()
+    {
+        yield return new WaitForSeconds(2);
+        StartCoroutine(ShowSequence());
+    }
     private IEnumerator ShowSequence()
     {
         yield return Animate(
